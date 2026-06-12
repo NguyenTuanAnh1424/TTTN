@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYE - Đăng Ký</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Roboto', 'sans-serif'] } } } }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen bg-[#f2f2f2] font-sans">
+
+    <div id="header-placeholder"></div>
+
+    <main class="flex-1 flex flex-col items-center py-10 px-4">
+        
+        <div class="bg-white w-full max-w-[420px] rounded-xl p-8 shadow-sm mb-6">
+            <h2 class="text-[#0d408b] text-[20px] font-bold text-center mb-6">ĐĂNG KÝ TÀI KHOẢN</h2>
+            
+            <form id="registerAuthForm">
+                <div class="relative mb-4">
+                    <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-[#1a4b8e]"></i>
+                    <input type="text" class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Tên đăng nhập hoặc Email" required>
+                </div>
+                
+                <div class="relative mb-4">
+                    <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-[#1a4b8e]"></i>
+                    <input type="password" class="w-full pl-11 pr-10 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Mật khẩu" required>
+                    <i class="fa-solid fa-eye-slash absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-gray-600 toggle-pw"></i>
+                </div>
+
+                <div class="relative mb-2">
+                    <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-[#1a4b8e]"></i>
+                    <input type="password" class="w-full pl-11 pr-10 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Nhập lại mật khẩu" required>
+                    <i class="fa-solid fa-eye-slash absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-gray-600 toggle-pw"></i>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg-white w-full max-w-[420px] rounded-xl p-8 shadow-sm">
+            <h2 class="text-[#0d408b] text-[20px] font-bold text-center mb-6">THÔNG TIN TÀI KHOẢN</h2>
+            
+            <form id="registerInfoForm">
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-800 mb-1">Họ và tên<span class="text-red-500">(*)</span></label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Nguyễn Văn A">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-800 mb-2">Giới tính<span class="text-red-500">(*)</span></label>
+                    <div class="flex gap-6 text-sm text-gray-700">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="nam" class="accent-[#0d408b]"> Nam</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="nu" class="accent-[#0d408b]"> Nữ</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-800 mb-1">Ngày sinh<span class="text-red-500">(*)</span></label>
+                    <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b] text-gray-500">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-800 mb-1">Địa chỉ<span class="text-red-500">(*)</span></label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Địa chỉ">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-800 mb-1">Email<span class="text-red-500">(*)</span></label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Email">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-800 mb-1">Số điện thoại<span class="text-red-500">(*)</span></label>
+                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Số điện thoại">
+                </div>
+
+                <div class="mb-6 flex items-center gap-3">
+                    <input type="text" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm outline-none focus:border-[#0d408b] focus:ring-1 focus:ring-[#0d408b]" placeholder="Mã xác nhận">
+                    <img src="https://dummyimage.com/120x45/fff/000.png&text=VnW27e" alt="Captcha" class="h-[45px] border border-gray-300 rounded">
+                    <i class="fa-solid fa-rotate-right text-[#0d408b] text-xl cursor-pointer hover:text-blue-800 transition"></i>
+                </div>
+
+                <button type="button" class="w-full bg-[#ff7e00] hover:bg-[#e67300] text-white font-bold py-3 rounded-lg transition-colors text-sm">ĐĂNG KÝ</button>
+                
+                <p class="text-[12px] text-center text-gray-500 mt-4 mb-2">
+                    Bằng việc click vào nút Đăng ký, Bạn đã đồng ý với <a href="#" class="text-[#4490c6] hover:underline">Điều khoản sử dụng</a>
+                </p>
+                
+                <div class="flex items-center my-4">
+                    <div class="flex-1 h-px bg-gray-300"></div>
+                    <div class="px-3 text-[13px] text-gray-500">hoặc</div>
+                    <div class="flex-1 h-px bg-gray-300"></div>
+                </div>
+                
+                <button type="button" onclick="window.location.href='Dang_nhap.html'" class="w-full bg-[#0d408b] hover:bg-[#0a3370] text-white font-bold py-3 rounded-lg transition-colors text-sm">ĐĂNG NHẬP</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="dangky.js"></script>
+</body>
+</html>

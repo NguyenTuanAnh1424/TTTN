@@ -1,0 +1,189 @@
+---
+const name = "Tuấn Anh";
+---
+
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>TaskMaster Pro - Tuấn Anh</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  
+  <body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-2xl max-w-md w-full border border-white">
+      
+      <!-- Tiêu đề & Tiến độ công việc -->
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+          TaskMaster Pro ⚡
+        </h1>
+        <p class="text-gray-500 text-sm mt-1">Ứng dụng của {name}</p>
+        
+        <!-- Bộ đếm tiến độ mới -->
+        <div class="mt-4 bg-gray-100 rounded-full h-2.5 w-full overflow-hidden">
+          <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-purple-600 h-2.5 w-0 transition-all duration-500"></div>
+        </div>
+        <p id="progressText" class="text-xs text-gray-500 font-semibold mt-1.5 text-right">Đã xong: 0/0 việc (0%)</p>
+      </div>
+
+      <!-- Ô nhập dữ liệu -->
+      <div class="flex gap-2 mb-4">
+        <input 
+          type="text" 
+          id="todoInput" 
+          placeholder="Thêm việc cần làm hôm nay..." 
+          class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white text-gray-700 text-sm transition"
+        />
+        <button 
+          id="addBtn"
+          class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 active:scale-95 text-white font-bold px-5 py-3 rounded-xl shadow-md transition text-sm"
+        >
+          Thêm
+        </button>
+      </div>
+
+      <!-- THANH BỘ LỌC TRẠNG THÁI MỚI -->
+      <div class="flex justify-between items-center gap-1 bg-gray-100 p-1 rounded-xl mb-4 text-xs font-bold text-gray-600">
+        <button id="filterAll" class="flex-1 py-2 rounded-lg bg-white text-indigo-600 shadow-sm transition">Tất cả</button>
+        <button id="filterActive" class="flex-1 py-2 rounded-lg hover:bg-white/50 transition">Chưa làm</button>
+        <button id="filterCompleted" class="flex-1 py-2 rounded-lg hover:bg-white/50 transition">Đã xong</button>
+      </div>
+
+      <!-- Danh sách hiển thị các công việc -->
+      <ul id="todoList" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+        <!-- JS sẽ tự động vẽ các hàng việc vào đây -->
+      </ul>
+
+    </div>
+
+  </body>
+</html>
+
+<script>
+  // Định nghĩa kiểu dữ liệu cho 1 công việc
+  interface Todo {
+    id: number;
+    text: string;
+    completed: boolean;
+  }
+
+  // Khởi tạo mảng chứa danh sách công việc (Lấy từ LocalStorage nếu có)
+  let todos: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
+  let currentFilter = 'all'; // Có 3 chế độ: 'all', 'active', 'completed'
+
+  // Lấy các phần tử giao diện
+  const todoInput = document.getElementById('todoInput') as HTMLInputElement;
+  const addBtn = document.getElementById('addBtn');
+  const todoList = document.getElementById('todoList');
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  
+  const filterAll = document.getElementById('filterAll');
+  const filterActive = document.getElementById('filterActive');
+  const filterCompleted = document.getElementById('filterCompleted');
+
+  // Hàm cập nhật thanh tiến độ và lưu vào bộ nhớ máy tính (LocalStorage)
+  function updateApp() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    renderTodos();
+
+    // Tính toán số lượng
+    const total = todos.length;
+    const completedCount = todos.filter(t => t.completed).length;
+    const percent = total === 0 ? 0 : Math.round((completedCount / total) * 100);
+
+    // Cập nhật lên giao diện
+    if (progressBar) progressBar.style.width = `${percent}%`;
+    if (progressText) progressText.innerText = `Đã xong: ${completedCount}/${total} việc (${percent}%)`;
+  }
+
+  // Hàm vẽ giao diện danh sách dựa trên dữ liệu mảng
+  function renderTodos() {
+    if (!todoList) return;
+    todoList.innerHTML = ''; // Xóa sạch danh sách cũ để vẽ lại từ đầu
+
+    // Lọc danh sách theo bộ lọc đang chọn
+    const filteredTodos = todos.filter(todo => {
+      if (currentFilter === 'active') return !todo.completed;
+      if (currentFilter === 'completed') return todo.completed;
+      return true; // mặc định hiển thị tất cả
+    });
+
+    // Duyệt qua từng việc để tạo thẻ HTML tương ứng
+    filteredTodos.forEach(todo => {
+      const li = document.createElement('li');
+      li.className = "flex items-center justify-between bg-gray-50/80 p-3.5 rounded-xl border border-gray-100 shadow-sm transition hover:bg-gray-100/50";
+
+      const textSpan = document.createElement('span');
+      textSpan.className = `text-sm font-medium cursor-pointer select-none flex-1 ${todo.completed ? 'line-through text-gray-400' : 'text-gray-700'}`;
+      textSpan.innerText = todo.text;
+      
+      // Chức năng Đổi trạng thái khi bấm vào chữ
+      textSpan.addEventListener('click', () => {
+        todo.completed = !todo.completed;
+        updateApp();
+      });
+
+      // Chức năng Xóa việc
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = "text-gray-400 hover:text-red-500 font-bold px-2 transition text-sm";
+      deleteBtn.innerText = "✕";
+      deleteBtn.addEventListener('click', () => {
+        todos = todos.filter(t => t.id !== todo.id);
+        updateApp();
+      });
+
+      li.appendChild(textSpan);
+      li.appendChild(deleteBtn);
+      todoList.appendChild(li);
+    });
+  }
+
+  // Chức năng thêm một công việc mới vào mảng
+  function addTodo() {
+    if (!todoInput) return;
+    const taskText = todoInput.value.trim();
+    if (taskText === "") return alert("Vui lòng gõ nội dung công việc!");
+
+    const newTodo: Todo = {
+      id: Date.now(), // dùng thời gian hiện tại làm ID duy nhất
+      text: taskText,
+      completed: false
+    };
+
+    todos.push(newTodo);
+    todoInput.value = "";
+    todoInput.focus();
+    updateApp();
+  }
+
+  // Quản lý bấm nút đổi Bộ lọc
+  function setFilter(filter: string, activeBtn: HTMLElement | null) {
+    currentFilter = filter;
+    
+    // Đổi màu nút đang được chọn
+    [filterAll, filterActive, filterCompleted].forEach(btn => {
+      if(btn) btn.className = "flex-1 py-2 rounded-lg hover:bg-white/50 transition";
+    });
+    if (activeBtn) activeBtn.className = "flex-1 py-2 rounded-lg bg-white text-indigo-600 shadow-sm transition";
+    
+    renderTodos();
+  }
+
+  // Gắn sự kiện cho các nút
+  if (addBtn) addBtn.addEventListener('click', addTodo);
+  if (todoInput) {
+    todoInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') addTodo();
+    });
+  }
+
+  if (filterAll) filterAll.addEventListener('click', () => setFilter('all', filterAll));
+  if (filterActive) filterActive.addEventListener('click', () => setFilter('active', filterActive));
+  if (filterCompleted) filterCompleted.addEventListener('click', () => setFilter('completed', filterCompleted));
+
+  // Lần đầu tiên mở web: chạy ứng dụng để nạp dữ liệu cũ từ máy lên
+  updateApp();
+</script>
