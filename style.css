@@ -1,0 +1,548 @@
+/* ==========================================================
+   STYLE.CSS - Hào Khí Du Hiệp - Đăng Ký Dự Thi
+   Cập nhật: Đồng bộ với hình ảnh thiết kế
+   ========================================================== */
+
+/* ============ RESET & FONT ============ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Màu nền dự phòng khi BGTRANGVOTING.png chưa load */
+    background-color: #120030;
+    background-image: radial-gradient(ellipse at 50% 0%, #4a0090 0%, #1a0050 40%, #0a0020 100%);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   HEADER - Thanh trên cùng
+   ========================================================= */
+.top-header {
+    height: 44px;
+    /* Màu tím + viền hồng phía dưới */
+    background: linear-gradient(90deg, #6a0090, #9b0bb5, #6a0090);
+    border-bottom: 2px solid #e040fb;
+    position: relative;
+    z-index: 1000;
+}
+
+/* THÊM ĐOẠN NÀY: Định vị logo to nằm chính giữa thanh tím */
+.header-logo-main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* translate(-50%, -15%) giúp căn giữa theo chiều ngang và đẩy logo dịch xuống dưới đè lên banner */
+    transform: translate(-50%, -25%);
+    z-index: 1001;
+    /* Đảm bảo lớn hơn z-index của .top-header để nổi lên trên cùng */
+}
+
+.header-logo-main img {
+    height: 350px;
+    /* Chiều cao logo to ở giữa, bạn có thể tăng giảm (ví dụ: 90px hoặc 100px) cho vừa mắt */
+    width: auto;
+    display: block;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.5));
+    /* Bóng đổ giúp logo nổi bật khỏi nền */
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 5px 14px;
+    color: #fff;
+    transition: filter 0.2s;
+}
+
+.btn-login:hover {
+    filter: brightness(1.2);
+    color: #fff;
+}
+
+/* ============================================================
+   MAIN WRAPPER - Wrapper bao ngoài nội dung
+   Ảnh nền BGTRANGVOTING.png đặt ở đây
+   ============================================================ */
+.main-wrapper {
+    /* Fallback gradient tím/xanh game khi ảnh chưa load */
+    background-color: #1a0050;
+    background-image:
+        /* ẢNH NỀN CHÍNH - đặt tên đúng file của bạn */
+        url('BGTRANGVOTING.png'),
+        /* Gradient dự phòng bên dưới */
+        linear-gradient(180deg, #2d0060 0%, #150040 50%, #0a001a 100%);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   HERO SECTION - Phần trên (logo Miss Mister + nút menu)
+   ============================================================ */
+.hero-section {
+    padding-top: 60px;
+    padding-bottom: 0;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Logo/text trung tâm (MISS MISTER) */
+.event-title-placeholder {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 150px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.event-title-placeholder img {
+    width: 50%;
+    max-width: 100%;
+    height: auto;
+
+    /* Giữ nguyên hiệu ứng bóng đổ phát sáng của bạn */
+    filter: drop-shadow(0 0 20px rgba(240, 167, 232, 0.7));
+    transform: translateX(-5px);
+}
+
+/* ============================================================
+   NAVIGATION BAR - Thanh nút menu nằm ngang
+   (THỂ LỆ | HƯỚNG DẪN | THAM GIA NGAY | TẢI GAME | NẠP THẺ)
+   ============================================================ */
+
+/* 1. Khung chứa tổng thể */
+.custom-bottom-menu {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Ép các nút sát đáy để nút giữa to hơn tự nhô lên */
+    gap: 20px;
+    /* Khoảng cách giữa các cụm nút */
+    width: 100%;
+    max-width: 960px;
+    /* Giới hạn độ rộng tối đa để không bị loãng */
+    position: absolute;
+    bottom: -110px;
+    /* Khoảng cách từ menu lên đáy màn hình (chỉnh tùy ý) */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    /* Đảm bảo menu luôn nằm trên cùng */
+}
+
+/* ==========================================
+   THÊM MỚI: Định dạng ảnh thanh ngang dài làm nền phía sau
+   ========================================== */
+.menu-bar-bg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
+    max-height: 75px;
+    /* Khống chế độ dẹt của thanh nền */
+    z-index: 1;
+    /* Nằm dưới cùng để làm nền */
+    pointer-events: none;
+    /* Không cản trở người dùng click vào các nút */
+    bottom: -30px;
+}
+
+/* 2. Nhóm 2 nút hai bên (Trái & Phải) */
+.menu-group-side {
+    display: flex;
+    gap: 12px;
+    /* Khoảng cách giữa Thể lệ - Hướng dẫn và Tải game - Nạp thẻ */
+    align-items: center;
+
+    /* CHỈNH DÒNG NÀY: Đẩy 4 nút phụ dịch lên một chút để nằm lọt lòng vào giữa thanh nền */
+    margin-bottom: 12px;
+
+    position: relative;
+    z-index: 2;
+    /* Nổi lên trên lớp ảnh nền */
+}
+
+/* 3. Định dạng chung cho thẻ chứa ảnh nút */
+.menu-btn-item,
+.menu-btn-center {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    /* Hiệu ứng hover mượt mà */
+}
+
+/* Hiệu ứng phóng to nhẹ khi di chuột vào */
+.menu-btn-item:hover,
+.menu-btn-center:hover {
+    transform: scale(1.05);
+}
+
+/* 4. Định dạng 4 nút ảnh bên cạnh (Thể Lệ, Hướng Dẫn, Tải Game, Nạp Thẻ) */
+.menu-btn-item img {
+    height: 48px;
+    width: auto;
+    display: block;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    /* Tạo bóng đổ nhẹ cho ảnh nổi bật */
+}
+
+/* 5. Định dạng nút khiên vàng chính giữa (Tham Gia Ngay) */
+.menu-btn-center {
+    position: relative;
+    z-index: 3;
+    /* Đảm bảo nút khiên to nằm đè lên trên dải nền */
+
+    /* CHỈNH DÒNG NÀY: Ép nhẹ nút khiên dịch xuống một chút đè qua thanh nền */
+    margin-bottom: -5px;
+}
+
+.menu-btn-center img {
+    height: 140px;
+    width: auto;
+    display: block;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* ============================================================
+   REGISTRATION SECTION - Phần form đăng ký
+   ============================================================ */
+.registration-section {
+    background: transparent;
+    padding-top: 0;
+    padding-bottom: 50px;
+}
+
+/* Tiêu đề ĐĂNG KÝ DỰ THI (ảnh đkdt.png) */
+.registration-section .text-center img {
+    display: block;
+    margin: 160px auto 16px;
+}
+
+/* ============================================================
+   CỘT TRÁI - Khu vực upload ảnh
+   (Đã sửa: Xóa nền trắng to, đổi style vát góc giống hình 2)
+   ============================================================ */
+.image-upload-area {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    padding: 0;
+    height: auto !important;
+    width: 100%;
+}
+
+/* Ô ảnh CHÍNH lớn */
+.main-image-box {
+    width: 100%;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9;
+
+    background-image: url('themanh.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px auto;
+    cursor: pointer;
+}
+
+/* 3 ô ảnh phụ nhỏ bên dưới */
+.sub-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    background-image: url('themanhnho.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.sub-image-box:hover {
+    transform: translateY(-2px);
+    /* Hiệu ứng nhấc nhẹ lên khi di chuột */
+}
+
+/* ============================================================
+   CỘT PHẢI - Form thông tin chung
+   ============================================================ */
+.form-area {
+    padding-left: 6px;
+}
+
+.user-info {
+    font-size: 0.88rem;
+    line-height: 1.75;
+}
+
+.form-label {
+    font-size: 0.84rem;
+    color: #eee;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* ============================================================
+   ẨN HOÀN TOÀN CHẤM TRÒN RADIO - THAY BẰNG ẢNH GIAO DIỆN GAME
+   ============================================================ */
+.gender-option {
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Ẩn hoàn toàn chấm tròn mặc định của trình duyệt */
+.gender-option input[type="radio"] {
+    display: none !important;
+}
+
+.gender-badge-img {
+    display: inline-block;
+    height: 34px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.gender-badge-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Nút chọn THI MISS (Sử dụng file ảnh thimiss.png của bạn) */
+.btn-miss {
+    width: 115px;
+    background-image: url('thimiss.png');
+}
+
+.gender-option input[type="radio"]:checked+.btn-miss {
+    background-image: url('thimiss.png');
+    filter: brightness(1.2);
+    /* Tăng sáng nhẹ khi được check nếu dùng chung 1 file ảnh */
+}
+
+/* Nút chọn THI MISSTER (Sử dụng file ảnh thimisster.png của bạn) */
+.btn-misster {
+    width: 115px;
+    background-image: url('thimisster.png');
+}
+
+.gender-option input[type="radio"]:checked+.btn-misster {
+    background-image: url('thimisster.png');
+    filter: brightness(1.2);
+    /* Tăng sáng nhẹ khi được check nếu dùng chung 1 file ảnh */
+}
+
+
+/* ============================================================
+   CẤU HÌNH CÁC KHUNG NHẬP LIỆU & CHỮ HỒNG TÍM (PLACEHOLDER)
+   ============================================================ */
+.custom-input {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #b3509b !important;
+    /* Màu chữ hồng tím khi người dùng gõ text vào khung */
+    font-size: 0.82rem !important;
+    width: 100%;
+}
+
+/* Cấu hình màu chữ placeholder hồng tím nhạt chuẩn theo hình ảnh thiết kế */
+.custom-input::placeholder {
+    color: #d282b9 !important;
+    opacity: 1 !important;
+}
+
+.custom-input::-webkit-input-placeholder {
+    color: #d282b9 !important;
+}
+
+.custom-input::-moz-placeholder {
+    color: #d282b9 !important;
+}
+
+.custom-input:-ms-input-placeholder {
+    color: #d282b9 !important;
+}
+
+.custom-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Cấu hình màu hồng tím cho text mặc định của thẻ select khu vực */
+.select-placeholder {
+    color: #d282b9 !important;
+}
+
+/* Ẩn icon mũi tên mặc định của thẻ Select */
+.select-clean {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+/* 1. THANH DÀI (Địa chỉ liên hệ, Video dự thi) */
+.input-thanh-dai {
+    background: url('box text.png') no-repeat center !important;
+    /* Đã cập nhật theo file của bạn */
+    background-size: 100% 100% !important;
+    height: 46px;
+    padding: 10px 24px !important;
+    /* Đẩy lùi chữ vào trong lòng khung trắng */
+}
+
+/* 2. THANH NGẮN (Số điện thoại, Chọn khu vực) */
+.input-thanh-ngan {
+    background: url('boxtextngan.png') no-repeat center !important;
+    background-size: 100% 100% !important;
+    height: 46px;
+    padding: 10px 24px !important;
+}
+
+/* 3. THANH BỰ (Nội dung giới thiệu) */
+.textarea-thanh-bu {
+    background: url('boxtext bự.png') no-repeat center !important;
+    /* Đã cập nhật theo file của bạn */
+    background-size: 100% 100% !important;
+    height: 120px;
+    padding: 16px 24px !important;
+    resize: none !important;
+}
+
+
+/* ============================================================
+   KHU VỰC TẢI ẢNH CMND/CCCD (ẢNH SẴN CHỮ MẶT TRƯỚC / MẶT SAU)
+   ============================================================ */
+.id-upload-btn {
+    display: block;
+    height: 72px;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.id-upload-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.id-upload-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Mặt trước */
+.upload-front {
+    background-image: url('mattruoc.png') !important;
+}
+
+/* Mặt sau */
+.upload-back {
+    background-image: url('matsau.png') !important;
+}
+
+
+/* ============================================================
+   NÚT HÀNH ĐỘNG ĐỒNG Ý / HỦY BỎ
+   ============================================================ */
+.action-btn {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    filter: brightness(1.15);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+/* Nút Đồng ý */
+.btn-submit {
+    width: 140px;
+    background-image: url('buttondongy.png');
+}
+
+/* Nút Hủy bỏ */
+.btn-cancel {
+    width: 140px;
+    background-image: url('buttonhuybo.png');
+}
+
+/* --- CSS CHO POPUP THỂ LỆ & HƯỚNG DẪN --- */
+
+/* 1. Loại bỏ toàn bộ khung nền trắng và viền mặc định của Bootstrap */
+.custom-modal-content {
+    background: transparent !important;
+    /* Biến nền modal thành trong suốt */
+    border: none !important;
+    /* Xóa viền trắng mặc định */
+    box-shadow: none !important;
+    /* Xóa bóng đổ mặc định */
+}
+
+/* 2. Căn chỉnh ảnh bên trong popup hiển thị tối đa */
+.custom-guide-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Hiệu ứng đổ bóng neon màu tím hợp với tông game */
+    filter: drop-shadow(0 0 15px rgba(162, 56, 255, 0.4));
+}
+
+/* 3. Ẩn nút đóng (X) chữ mặc định màu đen phía trên đi */
+.btn-close-custom {
+    display: none !important;
+    /* Đã có nút X màu hồng thiết kế sẵn trên ảnh của bạn */
+}
