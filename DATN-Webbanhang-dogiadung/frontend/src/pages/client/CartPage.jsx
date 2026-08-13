@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axiosClient from '../../api/axiosClient';
@@ -151,7 +151,7 @@ const CartPage = () => {
                     
                     <div className="flex items-center gap-4 w-full sm:w-auto">
                       <img
-                        src={product.image?.startsWith('http') ? product.image : `https://backend-dogiadung.onrender.com${product.image}`}
+                        src={product.image?.startsWith('http') ? product.image : `http://localhost:5000${product.image}`}
                         alt={product.name}
                         className="w-20 h-20 object-cover rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 flex-shrink-0"
                         onError={(e) => {

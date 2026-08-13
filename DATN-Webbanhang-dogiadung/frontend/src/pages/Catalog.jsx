@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import './Catalog.css'
 
@@ -22,8 +22,8 @@ export default function Catalog() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:5051/api/categories').then(r => r.json()),
-      fetch('http://localhost:5051/api/products').then(r => r.json()),
+      fetch('http://localhost:5000/api/categories').then(r => r.json()),
+      fetch('http://localhost:5000/api/products').then(r => r.json()),
     ]).then(([cats, prods]) => {
       const excluded = ['smart-home', 'new-arrival', 'on-sale', 'clearance']
       setCategories(cats.filter(c => !excluded.includes(c.id)))

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
-const API = 'http://localhost:5051/api';
+const API = 'http://localhost:5000/api';
 
 export default function AdminUsers() {
   const [users, setUsers]   = useState([]);

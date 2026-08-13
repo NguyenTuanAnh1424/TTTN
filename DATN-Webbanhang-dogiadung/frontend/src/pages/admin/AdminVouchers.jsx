@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import './AdminVouchers.css';
 
-const API = 'http://localhost:5051/api/vouchers';
+const API = 'http://localhost:5000/api/vouchers';
 
 const EMPTY_VOUCHER = {
   code: '', discountType: 'Percentage', discountValue: 0, 

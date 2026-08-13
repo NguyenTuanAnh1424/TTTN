@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import axiosClient from '../../api/axiosClient';
 import { Image as ImageIcon, Plus, Edit, Trash2, X } from 'lucide-react';
 
@@ -108,7 +108,7 @@ const AdminBannerManager = () => {
         {banners.map((b) => (
           <div key={b.id} className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm space-y-3 p-4">
             <div className="aspect-[21/9] bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
-              <img src={b.image?.startsWith('http') ? b.image : `https://backend-dogiadung.onrender.com${b.image}`} alt={b.title} className="w-full h-full object-cover" />
+              <img src={b.image?.startsWith('http') ? b.image : `http://localhost:5000${b.image}`} alt={b.title} className="w-full h-full object-cover" />
             </div>
             <div className="flex items-center justify-between">
               <div>

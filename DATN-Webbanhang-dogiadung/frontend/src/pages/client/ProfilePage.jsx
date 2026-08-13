@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginSuccess, updateUserSuccess } from '../../redux/slices/authSlice';
 import axiosClient from '../../api/axiosClient';
@@ -30,7 +30,7 @@ const ProfilePage = () => {
   const formatAvatarUrl = (url) => {
     if (!url) return '';
     if (url.startsWith('http://') || url.startsWith('https://')) return url;
-    return `https://backend-dogiadung.onrender.com${url.startsWith('/') ? '' : '/'}${url}`;
+    return `http://localhost:5000${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   // Nạp thông tin người dùng hiện tại vào Form

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import axiosClient from '../../api/axiosClient';
 import { Package, Plus, Edit, Trash2, Search, X, Image as ImageIcon, Sparkles, Flame, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import ConfirmModal from '../../components/common/ConfirmModal';
@@ -254,7 +254,7 @@ const AdminProductManager = () => {
                   <tr key={p.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/40">
                     <td className="py-3 px-4">
                       <img
-                        src={p.image?.startsWith('http') ? p.image : `https://backend-dogiadung.onrender.com${p.image}`}
+                        src={p.image?.startsWith('http') ? p.image : `http://localhost:5000${p.image}`}
                         alt={p.name}
                         className="w-12 h-12 object-cover rounded-xl bg-gray-100 border"
                       />

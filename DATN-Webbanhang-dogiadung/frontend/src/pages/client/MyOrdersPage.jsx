@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '../../api/axiosClient';
 import { PackageCheck, Clock, CheckCircle2, Truck, AlertCircle, XCircle } from 'lucide-react';
@@ -118,7 +118,7 @@ const MyOrdersPage = () => {
                   <div key={item.id} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-3 min-w-0">
                       <img
-                        src={item.product?.image?.startsWith('http') ? item.product.image : `https://backend-dogiadung.onrender.com${item.product?.image}`}
+                        src={item.product?.image?.startsWith('http') ? item.product.image : `http://localhost:5000${item.product?.image}`}
                         alt={item.product?.name}
                         className="w-12 h-12 object-cover rounded-lg bg-gray-50 border border-gray-100 flex-shrink-0"
                         onError={(e) => {

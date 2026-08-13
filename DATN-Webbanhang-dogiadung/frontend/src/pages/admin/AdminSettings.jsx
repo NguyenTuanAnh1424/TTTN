@@ -1,6 +1,6 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
-const API = 'http://localhost:5051/api';
+const API = 'http://localhost:5000/api';
 
 export default function AdminSettings() {
   const [section, setSection] = useState('general');
@@ -130,7 +130,7 @@ export default function AdminSettings() {
               <div style={{ fontFamily: 'monospace', fontSize: '0.9rem', color: '#333' }}>
                 <div style={{ marginBottom: '0.5rem' }}>📡 <strong>Server:</strong> localhost (SQL Server)</div>
                 <div style={{ marginBottom: '0.5rem' }}>🗃️ <strong>Database:</strong> HomeVibeDB</div>
-                <div style={{ marginBottom: '0.5rem' }}>🔗 <strong>API URL:</strong> http://localhost:5051/api</div>
+                <div style={{ marginBottom: '0.5rem' }}>🔗 <strong>API URL:</strong> http://localhost:5000/api</div>
               </div>
             </div>
           </div>

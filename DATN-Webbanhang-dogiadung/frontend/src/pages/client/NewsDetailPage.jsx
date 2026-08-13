@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axiosClient from '../../api/axiosClient';
 import { Newspaper, ArrowLeft, Calendar } from 'lucide-react';
@@ -70,7 +70,7 @@ const NewsDetailPage = () => {
         {news.image && (
           <div className="aspect-video bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
             <img
-              src={news.image?.startsWith('http') ? news.image : `https://backend-dogiadung.onrender.com${news.image}`}
+              src={news.image?.startsWith('http') ? news.image : `http://localhost:5000${news.image}`}
               alt={news.title}
               className="w-full h-full object-cover"
             />

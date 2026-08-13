@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+﻿import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
@@ -48,7 +48,7 @@ export default function Profile() {
   useEffect(() => {
     if (activeTab === 'orders' && user?.uid) {
       setOrdersLoading(true);
-      fetch(`http://localhost:5051/api/orders/user/${encodeURIComponent(user.uid)}`)
+      fetch(`http://localhost:5000/api/orders/user/${encodeURIComponent(user.uid)}`)
         .then(r => r.json())
         .then(data => setOrders(Array.isArray(data) ? data : []))
         .catch(() => setOrders([]))

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
 function useQuery() {
@@ -13,7 +13,7 @@ export default function Search() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:3000/api/products')
+    fetch('http://localhost:5000/api/products')
       .then(res => res.json())
       .then(data => {
         if (q) {

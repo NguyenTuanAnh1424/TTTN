@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../redux/slices/themeSlice';
@@ -42,7 +42,7 @@ const Header = () => {
   const formatAvatarUrl = (url) => {
     if (!url) return '';
     if (url.startsWith('http://') || url.startsWith('https://')) return url;
-    return `https://backend-dogiadung.onrender.com${url.startsWith('/') ? '' : '/'}${url}`;
+    return `http://localhost:5000${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   // Xử lý submit ô tìm kiếm

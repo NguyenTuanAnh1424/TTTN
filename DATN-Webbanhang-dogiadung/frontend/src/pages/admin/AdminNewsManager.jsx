@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import axiosClient from '../../api/axiosClient';
 import { Newspaper, Plus, Edit, Trash2, X } from 'lucide-react';
 
@@ -102,7 +102,7 @@ const AdminNewsManager = () => {
         {newsList.map((n) => (
           <div key={n.id} className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm p-4 space-y-3 flex flex-col justify-between">
             <div className="aspect-video bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
-              <img src={n.image?.startsWith('http') ? n.image : `https://backend-dogiadung.onrender.com${n.image}`} alt={n.title} className="w-full h-full object-cover" />
+              <img src={n.image?.startsWith('http') ? n.image : `http://localhost:5000${n.image}`} alt={n.title} className="w-full h-full object-cover" />
             </div>
             <div>
               <h3 className="font-bold text-sm text-gray-900 dark:text-white line-clamp-2">{n.title}</h3>

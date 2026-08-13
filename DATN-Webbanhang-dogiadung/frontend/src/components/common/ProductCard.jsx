@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ShoppingCart, Eye, Sparkles, Flame, Tag } from 'lucide-react';
@@ -77,7 +77,7 @@ const ProductCard = ({ product }) => {
       {/* HÌNH ẢNH SẢN PHẨM KHUNG VUÔNG */}
       <Link to={`/products/${product.id}`} className="relative block overflow-hidden aspect-square bg-gray-50 dark:bg-gray-800">
         <img
-          src={product.image?.startsWith('http') ? product.image : `https://backend-dogiadung.onrender.com${product.image}`}
+          src={product.image?.startsWith('http') ? product.image : `http://localhost:5000${product.image}`}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           onError={(e) => {

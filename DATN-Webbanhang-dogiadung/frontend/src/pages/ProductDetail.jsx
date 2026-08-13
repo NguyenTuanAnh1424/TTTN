@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+﻿import { useState, useEffect, useContext } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import { CartContext } from '../context/CartContext'
@@ -24,7 +24,7 @@ export default function ProductDetail() {
     setLoading(true);
 
     // 1. Lấy chi tiết sản phẩm
-    fetch(`http://localhost:5051/api/products/${id}`)
+    fetch(`http://localhost:5000/api/products/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Không tìm thấy sản phẩm')
         return res.json()
@@ -40,7 +40,7 @@ export default function ProductDetail() {
         setActiveImage(defaultImg);
 
         // 2. Lấy sản phẩm tương tự dựa trên CategoryId của sản phẩm vừa load
-        return fetch(`http://localhost:5051/api/products`);
+        return fetch(`http://localhost:5000/api/products`);
       })
       .then(res => res.json())
       .then(allProducts => {

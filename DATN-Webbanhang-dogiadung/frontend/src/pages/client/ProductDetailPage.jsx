@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axiosClient from '../../api/axiosClient';
@@ -156,7 +156,7 @@ const ProductDetailPage = () => {
         <div className="space-y-4">
           <div className="aspect-square bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 relative">
             <img
-              src={product.image?.startsWith('http') ? product.image : `https://backend-dogiadung.onrender.com${product.image}`}
+              src={product.image?.startsWith('http') ? product.image : `http://localhost:5000${product.image}`}
               alt={product.name}
               className="w-full h-full object-cover"
               onError={(e) => {

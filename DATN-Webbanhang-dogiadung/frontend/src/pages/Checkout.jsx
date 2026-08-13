@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from 'react'
+﻿import { useState, useContext, useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import { CartContext } from '../context/CartContext'
@@ -87,7 +87,7 @@ export default function Checkout() {
     // Poll mỗi 3 giây
     pollRef.current = setInterval(async () => {
       try {
-        const res  = await fetch(`http://localhost:5051/api/orders/${orderId}`)
+        const res  = await fetch(`http://localhost:5000/api/orders/${orderId}`)
         const data = await res.json()
         // API trả về { order: {...}, items: [...] }
         const status = data?.order?.status ?? data?.status
@@ -136,7 +136,7 @@ export default function Checkout() {
         }))
       }
 
-      const res = await fetch('http://localhost:5051/api/orders', {
+      const res = await fetch('http://localhost:5000/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData)

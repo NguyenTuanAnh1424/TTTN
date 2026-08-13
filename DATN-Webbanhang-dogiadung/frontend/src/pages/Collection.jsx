@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Collection({ type }) {
@@ -12,7 +12,7 @@ export default function Collection({ type }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:5051/api/products')
+    fetch('http://localhost:5000/api/products')
       .then(res => res.json())
       .then(data => {
         let filtered = data;

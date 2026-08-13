@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+﻿import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ export default function StaffDashboard() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5051/api/orders');
+      const res = await fetch('http://localhost:5000/api/orders');
       if (res.ok) {
         const data = await res.ok ? await res.json() : [];
         setOrders(Array.isArray(data) ? data : []);
@@ -40,7 +40,7 @@ export default function StaffDashboard() {
 
   const updateStatus = async (id, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5051/api/orders/${id}/status`, {
+      const res = await fetch(`http://localhost:5000/api/orders/${id}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
-const API = 'http://localhost:5051/api';
+const API = 'http://localhost:5000/api';
 
 const STATUS_COLORS = {
   Pending:   { bg: '#fff3cd', color: '#856404', label: 'Chờ xác nhận' },

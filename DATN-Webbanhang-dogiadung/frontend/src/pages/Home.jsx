@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
@@ -55,8 +55,8 @@ export default function Home() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:5051/api/categories').then(res => res.json()),
-      fetch('http://localhost:5051/api/products').then(res => res.json())
+      fetch('http://localhost:5000/api/categories').then(res => res.json()),
+      fetch('http://localhost:5000/api/products').then(res => res.json())
     ])
       .then(([catData, prodData]) => {
         const excludedCats = ['smart-home', 'new-arrival', 'on-sale', 'clearance']
