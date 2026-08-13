@@ -1,0 +1,226 @@
+/* Header theo phong cách (Nitori clone) */
+.site-header {
+  background: white;
+  border-bottom: 1px solid var(--gray-200);
+  position: relative;
+  z-index: 1000;
+  font-family: 'Inter', sans-serif;
+}
+
+/* TOP HEADER */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.site-logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #009e82; /* Màu xanh của Nitori */
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 600px;
+  margin: 0 2rem;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #009e82;
+}
+
+.search-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #009e82;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.delivery-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delivery-info .icon {
+  font-size: 1.8rem;
+}
+
+.delivery-info .text-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.auth-links {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.auth-links a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.auth-links a:hover {
+  color: #009e82;
+}
+
+.auth-links .divider {
+  margin: 0 0.5rem;
+  color: #ccc;
+}
+
+.cart-icon {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #333;
+}
+
+/* NAVIGATION (BOTTOM HEADER) */
+.main-nav {
+  border-top: 1px solid #f0f0f0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 2rem;
+}
+
+.nav-item {
+  position: static; /* Quan trọng để Mega menu trải rộng toàn màn hình */
+}
+
+.nav-item > a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1rem 0;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.nav-item > a:hover {
+  color: #009e82;
+}
+
+.arrow {
+  font-size: 0.6rem;
+  transform: scaleY(0.7);
+}
+
+/* MEGA MENU */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-top: 2px solid #009e82;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(10px);
+}
+
+/* Hiển thị menu khi hover vào LI.has-mega */
+.nav-item.has-mega:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-menu-content {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 5%;
+  gap: 2rem;
+}
+
+/* Cột danh mục trong Mega Menu */
+.mega-column {
+  flex: 1;
+}
+
+.mega-column h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+}
+
+.mega-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.mega-column ul li a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.mega-column ul li a:hover {
+  text-decoration: underline;
+  color: #009e82;
+}
+
+/* Khối ảnh trong Mega Menu (Hình 2 mô phỏng) */
+.mega-images {
+  display: flex;
+  gap: 1rem;
+  flex: 2; /* Chiếm không gian rộng hơn ở bên phải */
+  justify-content: flex-end;
+}
+
+.mega-images img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+}
