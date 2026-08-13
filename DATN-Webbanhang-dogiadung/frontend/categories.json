@@ -1,0 +1,93 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  "bathroom",
+                      "name":  "Phòng Tắm",
+                      "nameEn":  null,
+                      "emoji":  "🛁",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "bedroom",
+                      "name":  "Phòng ngủ",
+                      "nameEn":  null,
+                      "emoji":  "🛏",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "cleaning",
+                      "name":  "Vệ sinh nhà cửa",
+                      "nameEn":  null,
+                      "emoji":  "🧹",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "clearance",
+                      "name":  "Hàng thanh lý",
+                      "nameEn":  null,
+                      "emoji":  "???",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "decor",
+                      "name":  "Trang trí nội thất",
+                      "nameEn":  null,
+                      "emoji":  "🖼️",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "dining",
+                      "name":  "Phòng Ăn",
+                      "nameEn":  null,
+                      "emoji":  "🍽️",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "kitchen",
+                      "name":  "Thiết bị nhà bếp",
+                      "nameEn":  null,
+                      "emoji":  "🍳",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "living",
+                      "name":  "Phòng khách",
+                      "nameEn":  null,
+                      "emoji":  "🛋",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "new-arrival",
+                      "name":  "Sản phẩm mới",
+                      "nameEn":  null,
+                      "emoji":  "?",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "on-sale",
+                      "name":  "Nội thất khuyến mãi",
+                      "nameEn":  null,
+                      "emoji":  "??",
+                      "targetCount":  0,
+                      "gradient":  null
+                  },
+                  {
+                      "id":  "smart-home",
+                      "name":  "Nhà Thông Minh",
+                      "nameEn":  null,
+                      "emoji":  "🏠",
+                      "targetCount":  0,
+                      "gradient":  null
+                  }
+              ],
+    "Count":  11
+}
