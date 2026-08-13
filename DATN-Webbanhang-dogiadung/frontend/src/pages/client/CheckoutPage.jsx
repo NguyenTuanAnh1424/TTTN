@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosClient from '../../api/axiosClient';
@@ -198,7 +198,7 @@ const CheckoutPage = () => {
             </h2>
 
             <div className="space-y-3">
-              <label className="flex items-center justify-between p-4 rounded-2xl border-2 border-blue-600 bg-blue-50/50 dark:bg-blue-900/20 cursor-pointer">
+              <label className={`flex items-center justify-between p-4 rounded-2xl border-2 cursor-pointer ${formData.payment_method === 'COD' ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-900/20' : 'border-gray-200 dark:border-gray-700'}`}>
                 <div className="flex items-center gap-3">
                   <input
                     type="radio"
@@ -216,12 +216,19 @@ const CheckoutPage = () => {
                 <span className="text-xl">💵</span>
               </label>
 
-              <label className="flex items-center justify-between p-4 rounded-2xl border border-gray-200 dark:border-gray-700 opacity-60 cursor-not-allowed">
+              <label className={`flex items-center justify-between p-4 rounded-2xl border-2 cursor-pointer ${formData.payment_method === 'transfer' ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-900/20' : 'border-gray-200 dark:border-gray-700'}`}>
                 <div className="flex items-center gap-3">
-                  <input type="radio" disabled name="payment_method" value="VNPAY" />
+                  <input
+                    type="radio"
+                    name="payment_method"
+                    value="transfer"
+                    checked={formData.payment_method === 'transfer'}
+                    onChange={handleChange}
+                    className="text-blue-600"
+                  />
                   <div>
-                    <p className="font-bold text-sm text-gray-900 dark:text-white">Chuyển khoản qua VNPAY / Chuyển khoản (Đang bảo trì)</p>
-                    <p className="text-xs text-gray-500">Thanh toán quét mã QR qua ứng dụng ngân hàng.</p>
+                    <p className="font-bold text-sm text-gray-900 dark:text-white">Chuyển khoản VietQR (Duyệt tự động)</p>
+                    <p className="text-xs text-gray-500">Mở ứng dụng ngân hàng quét mã QR để thanh toán.</p>
                   </div>
                 </div>
                 <span className="text-xl">💳</span>

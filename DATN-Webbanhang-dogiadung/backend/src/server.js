@@ -7,6 +7,7 @@ const path = require('path');
 const { connectDB, sequelize } = require('./config/database');
 const seedDatabase = require('./seeders/seedData');
 const apiRoutes = require('./routes');
+const sepayRoutes = require('./routes/sepayRoutes');
 
 // Khởi tạo ứng dụng ExpressJS
 const app = express();
@@ -36,6 +37,8 @@ app.get('/api/health', (req, res) => {
 
 // Gắn toàn bộ các API Routes vào tiền tố '/api'
 app.use('/api', apiRoutes);
+// Gắn routes SePay vào prefix /api/sepay
+app.use('/api/sepay', sepayRoutes);
 
 /**
  * Hàm khởi chạy Server Backend và đồng bộ Cơ sở dữ liệu MySQL

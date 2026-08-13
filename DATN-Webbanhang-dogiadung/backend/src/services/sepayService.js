@@ -6,25 +6,25 @@ const { Order } = require('../models');
  */
 const processWebhook = async (data) => {
   try {
-    const { transferAmount, transferType, content } = data;
+    const { transferAmount, transferType, content, description } = data;
 
     // Chỉ xử lý giao dịch nhận tiền (in)
-    if (transferType !== 'in') {
+    if (transferType && transferType !== 'in') {
       console.log('Bỏ qua giao dịch không phải chuyển tiền vào (transferType !== "in").');
       return { success: true, message: 'Bỏ qua giao dịch' };
     }
     
-    if (!content) {
+    const searchStr = `${content || ''} ${description || ''}`.trim();
+    if (!searchStr) {
       return { success: false, message: 'Nội dung chuyển khoản trống' };
     }
 
-    // Tìm mã đơn hàng từ nội dung chuyển khoản (content có dạng DH123)
-    // Dùng regex để tìm chuỗi DH theo sau là các chữ số
-    const regex = /DH(\d+)/i;
-    const match = content.match(regex);
+    // Tìm mã đơn hàng từ nội dung chuyển khoản (chấp nhận DH123, DH 123, DH-123)
+    const regex = /DH\s*[-_]?\s*(\d+)/i;
+    const match = searchStr.match(regex);
     
     if (!match) {
-      console.log('Không tìm thấy cú pháp DH<ID> trong nội dung chuyển khoản:', content);
+      console.log('Không tìm thấy cú pháp DH<ID> trong nội dung chuyển khoản:', searchStr);
       return { success: false, message: 'Không tìm thấy mã đơn hàng' };
     }
 
