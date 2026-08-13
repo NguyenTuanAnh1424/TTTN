@@ -70,7 +70,7 @@ const NewsDetailPage = () => {
         {news.image && (
           <div className="aspect-video bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
             <img
-              src={news.image?.startsWith('http') ? news.image : `http://localhost:5000${news.image}`}
+              src={news.image?.startsWith('http') ? news.image : `https://backend-dogiadung.onrender.com${news.image}`}
               alt={news.title}
               className="w-full h-full object-cover"
             />

@@ -85,7 +85,7 @@ const HomePage = () => {
               }`}
             >
               <img
-                src={banner.image?.startsWith('http') ? banner.image : `http://localhost:5000${banner.image}`}
+                src={banner.image?.startsWith('http') ? banner.image : `https://backend-dogiadung.onrender.com${banner.image}`}
                 alt={banner.title}
                 className="w-full h-full object-cover opacity-80"
               />
@@ -301,7 +301,7 @@ const HomePage = () => {
               >
                 <div className="aspect-video bg-gray-100 dark:bg-gray-800 overflow-hidden">
                   <img
-                    src={news.image?.startsWith('http') ? news.image : `http://localhost:5000${news.image}`}
+                    src={news.image?.startsWith('http') ? news.image : `https://backend-dogiadung.onrender.com${news.image}`}
                     alt={news.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {

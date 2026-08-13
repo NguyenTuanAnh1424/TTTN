@@ -30,7 +30,7 @@ const ProfilePage = () => {
   const formatAvatarUrl = (url) => {
     if (!url) return '';
     if (url.startsWith('http://') || url.startsWith('https://')) return url;
-    return `http://localhost:5000${url.startsWith('/') ? '' : '/'}${url}`;
+    return `https://backend-dogiadung.onrender.com${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   // Nạp thông tin người dùng hiện tại vào Form

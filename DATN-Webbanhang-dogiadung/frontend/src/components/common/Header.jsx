@@ -42,7 +42,7 @@ const Header = () => {
   const formatAvatarUrl = (url) => {
     if (!url) return '';
     if (url.startsWith('http://') || url.startsWith('https://')) return url;
-    return `http://localhost:5000${url.startsWith('/') ? '' : '/'}${url}`;
+    return `https://backend-dogiadung.onrender.com${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   // Xử lý submit ô tìm kiếm

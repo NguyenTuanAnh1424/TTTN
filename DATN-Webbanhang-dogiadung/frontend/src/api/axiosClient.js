@@ -4,7 +4,7 @@ import axios from 'axios';
  * Khởi tạo Instance Axios kết nối tới Backend NodeJS Express (PORT 5000)
  */
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:5000/api' // Địa chỉ Backend API
+  baseURL: 'https://backend-dogiadung.onrender.com/api' // Địa chỉ Backend API
 });
 
 /**

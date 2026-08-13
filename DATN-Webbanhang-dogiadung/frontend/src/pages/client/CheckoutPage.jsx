@@ -249,7 +249,7 @@ const CheckoutPage = () => {
                   <div key={item.id} className="flex items-center justify-between gap-3 text-sm">
                     <div className="flex items-center gap-2 min-w-0">
                       <img
-                        src={product.image?.startsWith('http') ? product.image : `http://localhost:5000${product.image}`}
+                        src={product.image?.startsWith('http') ? product.image : `https://backend-dogiadung.onrender.com${product.image}`}
                         alt={product.name}
                         className="w-12 h-12 object-cover rounded-lg bg-gray-50 border border-gray-100 flex-shrink-0"
                       />
