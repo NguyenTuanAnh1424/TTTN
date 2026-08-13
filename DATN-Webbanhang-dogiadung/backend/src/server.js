@@ -47,7 +47,7 @@ const startServer = async () => {
 
     // 2. Đồng bộ hóa cấu trúc Models với các bảng trong MySQL Database
     // alter: true sẽ tự động cập nhật/tạo bảng mới mà không xóa dữ liệu cũ
-    await sequelize.sync({ alter: true });
+    await sequelize.sync();
     console.log('🔄 Đã đồng bộ cấu trúc tất cả Bảng (Tables) vào MySQL Database!');
 
     // 3. Khởi tạo dữ liệu mẫu (Admin, Categories, Products, Banners, News, Settings)
